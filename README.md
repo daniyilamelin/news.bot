@@ -1,37 +1,74 @@
-News Parser Bot (Telegram)
+News Parser Telegram Bot
 
-Цей проєкт є міні-застосунком Telegram-бота для збору та відправлення актуальних новин з обраних джерел. Застосунок дозволяє користувачам отримувати останні новини, обирати категорії новин, а також переглядати їх у зручному форматі через Telegram. У проєкті реалізовано логіку збору новин з різних джерел (RSS та веб-сайти), обробку контенту через AI для створення коротких описів та інтерактивний інтерфейс взаємодії з користувачем через Telegram.
+Description
 
-База даних застосунку (опційно) може містити інформацію про користувачів, їх підписки та історію отриманих новин. Основні таблиці можуть включати Users (`id`, `username`, `chat_id`), Subscriptions (`id`, `user_id`, `category`) та News (`id`, `title`, `category`, `url`, `summary`, `date`). Взаємозв’язки таблиць дозволяють відстежувати, які користувачі підписані на які категорії новин та які новини вже були надіслані.
+Telegram bot for collecting and delivering latest news from selected sources.
+Users can browse news by categories and receive them in a clean and readable format directly in Telegram.
 
-Збір новин реалізовано через модуль news_scraper.py, який парсить RSS-фіди та веб-сайти, обробляє HTML, перевіряє коректність посилань та завантажує зображення. `Модуль ai_generate.py` дозволяє обробляти текст новин, створювати стислий опис або узагальнення. Модуль `handlers.py` містить обробники команд Telegram
+The project includes:
 
-Бот реалізований на Python з використанням бібліотек `python-telegram-bot` для взаємодії з `Telegram API`, `requests` для `HTTP-запитів`, `BeautifulSoup4` для парсингу `HTML` та `Flask` для підтримки `keep_alive` механізму. Параметри підключення до бази даних або зовнішніх API зберігаються у файлі `config.py` та можуть бути задані через файл `.env`.
+- News scraping from RSS feeds and websites
+- AI-based summarization of articles
+- Interactive Telegram interface
 
-Для запуску проєкту необхідно клонувати репозиторій, встановити залежності, створити файл .env із токеном Telegram бота (`TELEGRAM_TOKEN`) та ключем API для AI (якщо використовується), а потім запустити головний файл `run.py`. Бот буде доступний у Telegram за зазначеним `username`.
+Features
 
-Встановлення та запуск:
+- Parsing news from RSS feeds and web pages
+- Image extraction and URL validation
+- AI-generated short summaries of news
+- Category-based news browsing
+- Interactive Telegram keyboards
+- Modular project structure
 
-Клонування репозиторію:
+Project Structure
 
-`git clone https://github.com/daniyil64345/tg_bot.git`
+- "news_scraper.py" — collects and parses news from sources
+- "ai_generate.py" — generates summaries using AI
+- "handlers.py" — Telegram bot command handlers
+- "config.py" — configuration and environment variables
+- "run.py" — main entry point of the bot
 
-`cd tg_bot`
+Tech Stack
 
+- Python 3.8+
+- python-telegram-bot
+- requests
+- BeautifulSoup4
+- Flask (for keep_alive)
+- dotenv (.env configuration)
 
-Встановлення залежностей:
+Installation & Setup
 
-`pip install -r requirements.txt`
+1. Clone the repository:
+   git clone https://github.com/YOUR_USERNAME/tg_bot.git
 
+2. Navigate to the project:
+   cd tg_bot
 
-Створення файлу `.env`:
+3. Install dependencies:
+   pip install -r requirements.txt
 
-`TELEGRAM_TOKEN=your_telegram_bot_token`
-`API_KEY=your_ai_api_key`
+4. Create ".env" file:
+   TELEGRAM_TOKEN=your_telegram_bot_token
+   API_KEY=your_ai_api_key
 
+5. Run the bot:
+   python run.py
 
-Запуск бота:
+How It Works
 
-`python run.py`
+- The bot fetches news from configured sources (RSS/web scraping)
+- Content is processed and cleaned
+- AI module generates short summaries
+- Users interact via Telegram commands and inline keyboards
+- Flask keep_alive ensures the bot stays online (if deployed)
 
-Після запуску бот готовий до роботи та надсилатиме новини користувачам Telegram за обраними категоріями. Проєкт демонструє роботу з парсингом даних, генерацією тексту через AI, інтеграцію з Telegram та організацію логіки через модулі Python.
+Notes
+
+This project demonstrates:
+
+- Web scraping techniques
+- Working with APIs
+- Telegram bot development
+- Modular Python architecture
+- Basic AI integration for text processing
