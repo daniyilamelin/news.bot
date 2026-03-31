@@ -1,6 +1,0 @@
-aiogram==3.13.1
-aiohttp
-feedparser
-beautifulsoup4
-requests
-python-dotenv
